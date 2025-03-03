@@ -1,37 +1,43 @@
 import './loginStyles.sass'
 import {useState} from "react";
+import {Link} from "react-router-dom";
+// import {auth} from "../firebase/config.js"
 
 function LoginPage() {
-    // const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-    // const passwordRegex = ''
+    // const [isLoading, setIsLoading] = useState(false);
+    const [loginType, setLoginType] = useState("login");
+    const [userCredentials, setUserCredentials] = useState({});
+    // const [error, setError] = useState('');
 
-    const [inputError, setInputError] = useState({
-        nameError: '',
-        emailError: '',
-        ageError: '',
-        expenseError: '',
-        submitError: ''
-    });
 
-    const [tempData, setTempData] = useState({
-        name: '',
-        email: '',
-        age: '',
-        expense: ''
-    });
 
-    const handleEmailChange = (event) => {
-        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-        setTempData({...tempData, name: event.target.value})
-        if (!event.target.value){
-            setInputError({...inputError, nameError: 'Must enter a name'})
-        }
-        else if (emailRegex.test(event.target.value))
-            setInputError({...inputError, nameError: 'Incorrect name format'})
-        else
-            setInputError({...inputError, nameError: ''})
-    };
-
+    // const [inputError, setInputError] = useState({
+    //     emailError: '',
+    //     passwordError: '',
+    // });
+    //
+    // const [tempData, setTempData] = useState({
+    //     email: '',
+    //     password: '',
+    // });
+    //
+    // const handleEmailChange = (event) => {
+    //     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    //     setTempData({...tempData, email: event.target.value})
+    //     if (!event.target.value){
+    //         setInputError({...inputError, emailError: 'Must enter an email address'});
+    //     }
+    //     else if (emailRegex.test(event.target.value))
+    //         setInputError({...inputError, emailError: 'Incorrect email format'})
+    //     else
+    //         setInputError({...inputError, emailError: ''})
+    // };
+    //
+    //
+    const handleCredentials = (event) => {
+        setUserCredentials({...userCredentials, [event.target.name]: event.target.value});
+        console.log(userCredentials);
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -39,41 +45,50 @@ function LoginPage() {
 
     return (
         <>
-            <div className={'w-100 h-100'} id={'login-container'}>
-                <div className={'d-flex justify-content-center'} id={'inner-login-container'}>
-                    <div className={'d-flex'}>
-                        <p>Sign up</p>
+            <div className={''} id={'login-container'}>
+                <div className={'inner-login-container'}>
+                    <h1 className={'text-center'}>Welcome to the Budget App</h1>
+                    <p className={'text-center mt-4'}>Login or signup to continue on. </p>
+                    <div className={'signInButtons gap-3 mb-4'}>
+                        <button className={`btn ${loginType === 'login' ? 'selected' : ''}`}
+                                onClick={() => setLoginType('login')}>
+                            Login
+                        </button>
+                        <button className={`btn ${loginType === 'signup' ? 'selected' : ''}`}
+                                onClick={() => setLoginType('signup')}>
+                            Sign Up
+                        </button>
                     </div>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} id={'login-form'}>
                         <label className='labels'>
+                            <p>Email</p>
                             <input
+                                name={'email'}
                                 className='inputs'
                                 type='text'
-                                placeholder='enter name'
-                                onChange={handleEmailChange}
+                                placeholder='enter your email'
+                                onChange={handleCredentials}
                             />
-                            {/*{inputError.nameError && <p className='error'>{inputError.nameError}</p>}*/}
+                            {/*{inputError.emailError && <p className='error'>{inputError.emailError}</p>}*/}
                         </label>
                         <label className='labels'>
+                            <p>Password</p>
                             <input
+                                name={'password'}
                                 className='inputs'
                                 type='text'
-                                placeholder='enter email'
-                                onChange={handleEmailChange}
-                            />
-                            {/*{inputError.nameError && <p className='error'>{inputError.nameError}</p>}*/}
-                        </label>
-                        <label className='labels'>
-                            <input
-                                className='inputs'
-                                type='text'
-                                placeholder='enter password'
-                                // onChange={}
+                                placeholder='enter your password'
+                                onChange={handleCredentials}
                             />
                             {/*{inputError.nameError && <p className='error'>{inputError.emailError}</p>}*/}
                         </label>
                         <div className='d-flex justify-content-center mt-1'>
-                            <input type="submit" id='submit-button'/>
+                            {
+                                loginType === 'login' ?
+                                    <input type="submit" id='submit-button' value={'Sign In'}/>
+                                    :
+                                    <input type="submit" id='submit-button' value={'Sign Up'}/>
+                            }
                         </div>
                         {/*{inputError.submitError && <p className='error text-center'>{inputError.submitError}</p>}*/}
                     </form>

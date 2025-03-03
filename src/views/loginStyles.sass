@@ -1,47 +1,68 @@
+$pr-color: #03624c
+$se-color: #030f0f
+$tr-color: #00df82
+
 #login-container
+  background-color: #00261d
+  height: 100vh
+  width: 100%
+  border: 1px solid black
   display: flex
   justify-content: center
   align-items: center
-  margin-top: 5%
-  padding: 100px
+  font-family: "Exo 2", Geneva, sans-serif
 
-#inner-login-container
-  padding: 60px 30px 60px 30px
-  border: 1px solid black
+.inner-login-container
+  background-color: $se-color
   border-radius: 10px
-  box-shadow: 0 0 10px rgba(0, 0, 0, .3)
+  color: white
+  width: 610px
+  padding: 80px
 
+.signInButtons
+  display: flex
+  justify-content: center
+  margin-top: 40px
 
+.btn
+  color: black
+  background-color: $tr-color
+  display: inline-block
+
+  &:hover
+    background-color: $pr-color
 
 .labels
+  height: 110px
   display: block
-  padding: 5px 0
-  margin: 15px 0
-  box-shadow: 0 0 2px rgba(0, 0, 0, .3)
-  background-color: #d1d1d1
+  margin: 0 0 0 0
   border-radius: 5px
-
-
 
 .inputs
-  //border-radius: 5px
+  background-color: $pr-color
+  padding: 10px
+  width: 100%
   border: none
-  padding: 5px 5px 5px 15px
-  font-size: 1.3rem
-  background-color: #d1d1d1
-  ::placeholder
-    color: white
+  font-size: 1rem
+  border-radius: 5px
+
+
+.inputs::placeholder
+  color: white
+
 
 #submit-button
-  color: white
-  background-color: dodgerblue
+  color: black
+  border: none
+  background-color: $tr-color
   border-radius: 5px
-  transition: 0.4s ease
+  transition: 0.2s ease
   padding: 10px
 
   &:hover
-    background-color: deepskyblue
-    transition: 0.4s ease
+    color: white
+    background-color: $pr-color
+    transition: 0.2s ease
 
 .error
   color: red
