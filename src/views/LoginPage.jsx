@@ -1,20 +1,16 @@
 import './loginStyles.sass'
 import {useState} from "react";
 import {Link} from "react-router-dom";
-// import {auth} from "../firebase/config.js"
+import {auth} from "../firebase/config.js"
+import {createUserWithEmailAndPassword } from "firebase/auth";
 
 function LoginPage() {
     // const [isLoading, setIsLoading] = useState(false);
     const [loginType, setLoginType] = useState("login");
     const [userCredentials, setUserCredentials] = useState({});
-    // const [error, setError] = useState('');
+    const [error, setError] = useState('');
 
 
-
-    // const [inputError, setInputError] = useState({
-    //     emailError: '',
-    //     passwordError: '',
-    // });
     //
     // const [tempData, setTempData] = useState({
     //     email: '',
@@ -39,8 +35,19 @@ function LoginPage() {
         console.log(userCredentials);
     }
 
-    const handleSubmit = (event) => {
+    const handleSignUp = (event) => {
         event.preventDefault();
+
+        setError('');
+
+        createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
+            .then((userCredential) => {
+                // Signed up
+                const user = userCredential.user;
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
     }
 
     return (
@@ -59,7 +66,7 @@ function LoginPage() {
                             Sign Up
                         </button>
                     </div>
-                    <form onSubmit={handleSubmit} id={'login-form'}>
+                    <form  id={'login-form'}>
                         <label className='labels'>
                             <p>Email</p>
                             <input
@@ -87,10 +94,16 @@ function LoginPage() {
                                 loginType === 'login' ?
                                     <input type="submit" id='submit-button' value={'Sign In'}/>
                                     :
-                                    <input type="submit" id='submit-button' value={'Sign Up'}/>
+                                    <input type="submit" id='submit-button' value={'Sign Up'} onClick={handleSignUp}/>
                             }
                         </div>
-                        {/*{inputError.submitError && <p className='error text-center'>{inputError.submitError}</p>}*/}
+
+                        {
+                            error &&
+                            <div className={'error text-center mt-3'}>
+                                {error}
+                            </div>
+                        }
                     </form>
                 </div>
             </div>
