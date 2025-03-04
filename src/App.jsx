@@ -4,6 +4,8 @@ import LoginPage from "./views/LoginPage.jsx";
 import {selectUsers} from './store/userSlice.js'
 import {useSelector} from "react-redux";
 import Dashboard from "./views/Dashboard.jsx";
+import Layout from "./components/Layout/Layout.jsx";
+
 
 function App() {
     const user = useSelector(selectUsers);
@@ -14,7 +16,9 @@ function App() {
         {user.currentUser ?
       <BrowserRouter>
           <Routes>
-              <Route index element={<Dashboard/>}/>
+              <Route path={'/'} element={<Layout/>}>
+                  <Route index element={<Dashboard/>}/>
+              </Route>
           </Routes>
       </BrowserRouter> :
       <LoginPage/>

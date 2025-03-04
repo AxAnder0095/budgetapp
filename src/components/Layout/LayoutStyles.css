@@ -1,0 +1,15 @@
+.main-layout {
+  height: 100vh;
+  background-color: green;
+  width: 100%;
+}
+
+.top-page {
+  height: 8%;
+}
+
+.bottom-page {
+  height: 92%;
+}
+
+/*# sourceMappingURL=LayoutStyles.css.map */
