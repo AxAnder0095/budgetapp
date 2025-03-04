@@ -1,35 +1,33 @@
 import './loginStyles.sass'
 import {useState} from "react";
-import {Link} from "react-router-dom";
 import {auth} from "../firebase/config.js"
-import {createUserWithEmailAndPassword } from "firebase/auth";
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+    onAuthStateChanged
+} from "firebase/auth";
+import alert from "bootstrap/js/src/alert.js";
+import {useDispatch} from "react-redux";
+import {setUser} from '../store/userSlice.js'
 
 function LoginPage() {
-    // const [isLoading, setIsLoading] = useState(false);
+    const dispatch = useDispatch();
     const [loginType, setLoginType] = useState("login");
     const [userCredentials, setUserCredentials] = useState({});
     const [error, setError] = useState('');
 
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/auth.user
+            dispatch(setUser({id: user.uid, email: user.email}))
+        } else {
+            // User is signed out
+            dispatch(setUser(null))
+        }
+    });
 
-    //
-    // const [tempData, setTempData] = useState({
-    //     email: '',
-    //     password: '',
-    // });
-    //
-    // const handleEmailChange = (event) => {
-    //     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-    //     setTempData({...tempData, email: event.target.value})
-    //     if (!event.target.value){
-    //         setInputError({...inputError, emailError: 'Must enter an email address'});
-    //     }
-    //     else if (emailRegex.test(event.target.value))
-    //         setInputError({...inputError, emailError: 'Incorrect email format'})
-    //     else
-    //         setInputError({...inputError, emailError: ''})
-    // };
-    //
-    //
     const handleCredentials = (event) => {
         setUserCredentials({...userCredentials, [event.target.name]: event.target.value});
         console.log(userCredentials);
@@ -37,17 +35,40 @@ function LoginPage() {
 
     const handleSignUp = (event) => {
         event.preventDefault();
-
         setError('');
 
         createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
-            .then((userCredential) => {
-                // Signed up
-                const user = userCredential.user;
-            })
+            // .then((userCredential) => {
+            //     // Signed up
+            //     dispatch(setUser({id: userCredential.user.uid, email: userCredential.user.email}))
+            // })
             .catch((error) => {
                 setError(error.message);
             });
+    }
+
+    const handleLogin = (event) => {
+        event.preventDefault();
+        setError('');
+
+        signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
+            // .then((userCredential) => {
+            //     // Signed in
+            //     // const user = userCredential.user;
+            //     console.log(userCredential.user)
+            //     dispatch(setUser({id: userCredential.user.uid, email: userCredential.user.email}))
+            //     // ...
+            // })
+            .catch((error) => {
+                setError(error.message);
+            });
+    }
+
+    const handleForgotPassword = () => {
+        const email = prompt('Please enter your email')
+        sendPasswordResetEmail(auth, email)
+        alert('email sent: Check your inbox for password reset instructions.')
+
     }
 
     return (
@@ -92,7 +113,7 @@ function LoginPage() {
                         <div className='d-flex justify-content-center mt-1'>
                             {
                                 loginType === 'login' ?
-                                    <input type="submit" id='submit-button' value={'Sign In'}/>
+                                    <input type="submit" id='submit-button' value={'Sign In'} onClick={handleLogin}/>
                                     :
                                     <input type="submit" id='submit-button' value={'Sign Up'} onClick={handleSignUp}/>
                             }
@@ -104,6 +125,8 @@ function LoginPage() {
                                 {error}
                             </div>
                         }
+
+                        <p onClick={handleForgotPassword}>Forgot password?</p>
                     </form>
                 </div>
             </div>
