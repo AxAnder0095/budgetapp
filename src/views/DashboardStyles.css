@@ -1,0 +1,81 @@
+.dash-title {
+  height: 10%;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.graph-row-1 {
+  height: 480px;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 1200px) {
+  .graph-row-1 {
+    height: 350px;
+    background-color: blue;
+  }
+}
+
+.first-dash-row {
+  background-color: #1c2e2e;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.expense-title {
+  font-size: 3rem;
+}
+@media (max-width: 1200px) {
+  .expense-title {
+    font-size: 1.4rem;
+  }
+}
+
+#dash-balance, #dash-expense, #dash-budget {
+  font-size: 2.3rem;
+}
+@media (max-width: 1200px) {
+  #dash-balance, #dash-expense, #dash-budget {
+    font-size: 1.4rem;
+  }
+}
+
+.eb-row {
+  margin: 20px 0 0 0;
+  padding: 0 0 0 0;
+  border-radius: 5px;
+}
+
+#dash-balance {
+  background-image: linear-gradient(90deg, #00f7ff, #00ffae);
+  color: transparent;
+  background-clip: text;
+}
+
+#dash-expense {
+  color: red;
+}
+
+#dash-budget {
+  color: #00df82;
+}
+
+.ex-titles {
+  font-size: 1.7rem;
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 1200px) {
+  .ex-titles {
+    font-size: 1.4rem;
+  }
+}
+
+.graph-row-2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/*# sourceMappingURL=DashboardStyles.css.map */
