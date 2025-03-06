@@ -1,46 +1,53 @@
 $tr-color: #00df82
 $another-color: #0e1717
-$breakpoint-large-screen: 1200px
+$breakpoint-large-screen: 1430px
 $breakpoint-medium-screen: 992px
 
 .dash-title
   height: 10%
   display: flex
   align-items: center
-  color: white
+  color: black
 
 .graph-row-1
-  height: 480px
+  height: 360px
   display: flex
-  justify-content: center
+
 
   @media (max-width: $breakpoint-large-screen)
-    height: 350px
+    height: 300px
     background-color: blue
 
 
 .first-dash-row
   background-color: #1c2e2e
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3)
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3)
   color: white
+  //border-radius: 5px
 
 .expense-title
-  font-size: 3rem
+  font-size: 2.2rem
 
   @media (max-width: $breakpoint-large-screen)
     font-size: 1.4rem
+
+
+.ex-titles
+  font-size: 1.4rem
+  margin: 0
+  padding: 0
+
+  @media (max-width: $breakpoint-large-screen)
+    font-size: 1.0rem
 
 
 #dash-balance, #dash-expense, #dash-budget
-  font-size: 2.3rem
+  font-size: 1.6rem
 
   @media (max-width: $breakpoint-large-screen)
-    font-size: 1.4rem
+    font-size: 1.2rem
 
-.eb-row
-  margin: 20px 0 0 0
-  padding: 0 0 0 0
-  border-radius: 5px
+
 
 #dash-balance
   background-image: linear-gradient(90deg, #00f7ff, #00ffae)
@@ -53,21 +60,25 @@ $breakpoint-medium-screen: 992px
 #dash-budget
   color: $tr-color
 
-.ex-titles
-  font-size: 1.7rem
-  margin: 0
-  padding: 0
-
-
-  @media (max-width: $breakpoint-large-screen)
-    font-size: 1.4rem
-
-
 
 .graph-row-2
   display: flex
-  justify-content: center
   margin-top: 40px
+
+.mini-display
+  height: 13rem
+  border: 1px solid rgba(0, 0, 0, 0.3)
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3)
+  border-radius: 5px
+
+
+.dash-currency
+  margin: 0 0 0 0
+  font-size: 2rem
+  padding-top: 0.8rem
+
+.dash-currency-desc
+  margin: 0 0 0 0
 
 
 //@media(max-width:1400px)

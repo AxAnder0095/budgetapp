@@ -1,8 +1,8 @@
 .main-layout {
-  height: 100vh;
+  height: 1500px;
   width: 100%;
   font-family: "Exo 2", Geneva, sans-serif;
-  background-color: #030f0f;
+  background-color: ghostwhite;
 }
 
 .bottom-page {
@@ -23,7 +23,7 @@
   width: 15%;
   vertical-align: top;
   height: 100%;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
 
 /*# sourceMappingURL=LayoutStyles.css.map */
