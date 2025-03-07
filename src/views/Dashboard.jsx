@@ -5,8 +5,11 @@ import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { TbZoomMoney } from "react-icons/tb";
 import { GiReceiveMoney } from "react-icons/gi";
 
-// import {useSelector} from "react-redux";
-import BRadarChart from "./graphs/RadarChart.jsx";
+
+import SLineChart from "./graphs/LineChart.jsx";
+import SPie from "./graphs/SPieChart.jsx";
+
+
 
 function Dashboard (){
     // const title = useSelector((state) => state.pageTitle.pageTitle)
@@ -53,8 +56,25 @@ function Dashboard (){
                 </div>
             </div>
 
-            <div className={'row ms-0 me-0 mt-3 graph-row'}>
-                <div className={'col-md-10 border border-dark'}>d</div>
+            <div className={'row ms-0 me-0 mt-3 gap-4 graph-row'}>
+                <div className={'col-xl-5 line-chart'}>
+                    <SLineChart/>
+                </div>
+                <div className={'col-xl-5 line-chart'}>
+                    <div className={'pie-chart-containers w-50'}>
+                        <div className={'h-100'} id={'pie-chart-desc'}>
+                            <div className={''}>
+                                <p id={'pie-color1'}>Food</p>
+                                <p id={'pie-color2'}>Bills</p>
+                                <p id={'pie-color3'}>Entertainment</p>
+                                <p id={'pie-color4'}>Savings</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={'pie-chart-containers w-50'}>
+                        <SPie/>
+                    </div>
+                </div>
             </div>
 
 

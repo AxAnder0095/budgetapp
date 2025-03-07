@@ -3,12 +3,22 @@ $se-color: #030f0f
 $tr-color: #00df82
 $qu-color: #00261d
 
+$breakpoint-large-screen: 1430px
+$breakpoint-medium-large-screen: 1200px
+$breakpoint-medium-screen: 992px
+
 .main-layout
-  //height: 100vh
-  height: 1500px
+  height: 100vh
+  //height: 1000px
   width: 100%
   font-family: "Exo 2", Geneva, sans-serif
   background-color: ghostwhite
+
+  @media (max-width: $breakpoint-medium-large-screen)
+    height: 1200px
+
+  @media (max-width: $breakpoint-medium-screen)
+    height: 1800px
 
 
 .bottom-page
