@@ -40,9 +40,6 @@ function Navbar() {
             <div className={'row mx-0 navigation'}>
                 <Link to={'/transactions'} className={'links'} onClick={() => dispatch(setPageTitle('Transaction History'))}>Transactions</Link>
             </div>
-            <div className={'row mx-0 navigation'}>
-                <Link to={'/'} className={'links'}>Dashboard</Link>
-            </div>
             <div className={'row mx-0 nav-logout'}>
                 <button onClick={handleSignOut} id={'logout-button'}>Logout</button>
             </div>
