@@ -14,7 +14,11 @@ function Expense(){
                 <div className={'col-5 ex-first-col'}>
                     <form>
                         <input type="radio" id="food" name="ex-itmes" value="food" className={'food-ex'}/>
-                        <label htmlFor="food">Food</label>
+                        <label htmlFor="food">
+                            <div id={'food-text'}>Food</div>
+                        </label>
+
+
                         <input type="radio" id="bills" name="ex-itmes" value="bills" />
                         <label htmlFor="bills">Bills</label><br/>
                         <input type="radio" id="entertainment" name="ex-itmes" value="entertainment" />
