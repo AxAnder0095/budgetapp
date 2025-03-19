@@ -6,11 +6,60 @@
 }
 
 .ex-first-col {
-  border: 1px solid black;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  width: 420px;
 }
 
-#food-text {
-  border: 1px;
+.expense-input {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+.ex-input-label {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 1rem;
+}
+
+#food-label, #bills-label, #et-label, #saving-label {
+  width: 150px;
+  padding: 1rem 0 1rem 0.7rem;
+  margin: 0.3rem;
+  border-radius: 5px;
+  color: white;
+}
+
+#food-label {
+  background-color: #ffbc2b;
+}
+
+#bills-label {
+  background-color: #2bff99;
+}
+
+#et-label {
+  background-color: #ff362b;
+}
+
+#saving-label {
+  background-color: #ff2b79;
+}
+
+#expense-button {
+  border: none;
+  padding: 0.8rem;
+  color: white;
+  background-color: #1c2e2e;
+  border-radius: 5px;
+}
+#expense-button:hover {
+  background-color: #00df82;
 }
 
 /*# sourceMappingURL=ExpenseStyles.css.map */
