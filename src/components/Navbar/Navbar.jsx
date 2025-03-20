@@ -38,7 +38,7 @@ function Navbar() {
                 <Link to={'/expenses'} className={'links'} onClick={() => dispatch(setPageTitle('Your Expenses'))}>Expenses</Link>
             </div>
             <div className={'row mx-0 navigation'}>
-                <Link to={'/transactions'} className={'links'} onClick={() => dispatch(setPageTitle('Transaction History'))}>Transactions</Link>
+                <Link to={'/transactions'} className={'links'} onClick={() => dispatch(setPageTitle('Transaction History'))}>Enter Data</Link>
             </div>
             <div className={'row mx-0 nav-logout'}>
                 <button onClick={handleSignOut} id={'logout-button'}>Logout</button>

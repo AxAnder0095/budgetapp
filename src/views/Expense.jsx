@@ -9,11 +9,11 @@ function Expense(){
                     <div className={'row mx-0'}>
                         <div className={'col-6'}>
                             <p className={''}>Remaining Budget</p>
-                            <p className={''}>$500</p>
+                            <p className={'re-amount'}>$500</p>
                         </div>
                         <div className={'col-6'}>
                             <p>Current Expenses</p>
-                            <p>$1200</p>
+                            <p id={'ex-amount'}>$1200</p>
                         </div>
                     </div>
                 </div>

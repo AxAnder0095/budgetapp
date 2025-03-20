@@ -27,6 +27,16 @@
   margin-bottom: 1rem;
 }
 
+.re-amount {
+  color: darkgreen;
+  font-size: 1.5rem;
+}
+
+#ex-amount {
+  color: red;
+  font-size: 1.5rem;
+}
+
 #food-label, #bills-label, #et-label, #saving-label {
   width: 150px;
   padding: 1rem 0 1rem 0.7rem;

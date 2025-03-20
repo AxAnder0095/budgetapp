@@ -1,7 +1,12 @@
+import './DataEntryStyles.sass'
+
 function Transactions() {
     return(
         <>
-            <h1>Transactions page</h1>
+            <div className={'enter-data-title'}><h1>Data entry page</h1></div>
+            <div className={'enter-b-data'}>
+                d
+            </div>
         </>
     )
 }
